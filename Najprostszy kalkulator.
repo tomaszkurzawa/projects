@@ -1,5 +1,5 @@
 """
-Zadanie: Stwórz prosty kalkulator, opierający się na trzech zmiennych a,b i c. Niech a i b będą liczbami a c będzie
+Zadanie: Stwórz prosty kod źródłowy kalkulatora, opierający się na trzech zmiennych a,b i c. Niech a i b będą liczbami a c będzie
 operatorem. Następnie przy wywołaniu funkcji określ wartości podane powyżej.
 """
 #Tworzymy funkcję.
