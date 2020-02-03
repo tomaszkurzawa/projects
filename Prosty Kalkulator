@@ -1,5 +1,5 @@
 """
-Zadanie: Stwórz kalkulator, opierający się na zmiennych a,b i c. Pierwsze dwie niech będą liczbami, które będą liczone
+Zadanie: Stwórz kod źródłowy kalkulatora, opierający się na zmiennych a,b i c. Pierwsze dwie niech będą liczbami, które będą liczone
 przez operator - operatorem będzie c. Niech trzy takie zmienne nie będą ustalane w funkcji, ale wpisywane przez użytkownika.
 """
 #Tworzymy funkcję.
