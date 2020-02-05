@@ -1,17 +1,17 @@
-from tkinter import *
+from tkinter import * #importowanie tkintera
 
-root = Tk()
+root = Tk() #glowny korzen tkintera, okno
 
-e = Entry(root, width=50)
-e.pack ()
-e.insert(0, "What's your name:")
+e = Entry(root, width=50) #okno ma wprowadzanie
+e.pack () #gdzie ma znajdowac sie okno
+e.insert(0, "What's your name:") #wprowadzanie 
 
-def myClick():
-    hello = "You look lovely today, " + e.get()
-    myLabel = Label(root, text=hello)
-    myLabel.pack()
+def myClick(): #definicja fukncji
+    hello = "You look lovely today, " + e.get() #definiujemy poprzednie dane, string z dodatkiem wczesniej wpisanego kodu
+    myLabel = Label(root, text=hello) #tekst wyswietlany, ktory zdefiniowalismy wczesniej
+    myLabel.pack() #umiejscowienie labela
 
-myButton = Button(root, text= "Click", command= myClick)
-myButton.pack()
+myButton = Button(root, text= "Click", command= myClick) #tworzenie guzika
+myButton.pack() #gdzie guzik sie znajduje
 
-root.mainloop()
+root.mainloop() #petla na nie zamykanie okna
