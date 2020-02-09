@@ -1,0 +1,190 @@
+from tkinter import *
+from tkinter import messagebox
+import webbrowser
+root = Tk()
+root.title("Simple calculator")
+root.configure(background="Black")
+root.resizable(width=False, height=False)
+root.geometry("570x640+0+0")
+
+menu = Menu(root)
+root.config(menu=menu)
+
+
+def do_nothing():
+    return
+"""
+def science_calc():
+    root.resizable(width=False, height=False)
+    root.geometry("940x640+0+0")
+    button_percent = Button(root, text="x2", padx=20, pady=10, width=10, background="Black", font="Bold", fg="White", bd=10,
+                      command=button_potega)
+    button_percent.grid(row=1, column=4)
+"""
+
+
+subMenu = Menu(menu)
+menu.add_cascade(label="Opcje", menu=subMenu)
+subMenu.add_command(label="Kalkulator Naukowy", command = do_nothing())
+subMenu.add_command(label="", command=do_nothing)
+subMenu.add_separator()
+subMenu.add_command(label="Exit", command= root.destroy)
+editMenu= Menu(menu)
+menu.add_cascade(label="edit", menu=editMenu)
+editMenu.add_command(label="redo", command=do_nothing)
+editMenu = Menu(menu)
+menu.add_cascade(label="Edit", menu=editMenu)
+editMenu.add_command(label="Redo", command=do_nothing)
+
+
+e = Entry(root, width=35, borderwidth=65, font="Bold", background="Orange", fg="White")
+e.grid(row=0, column=0, columnspan=3, padx=10, pady=10)
+
+def button_cnd():
+    MsgBox = messagebox.showinfo('???!!!', "Dont click random buttons, you can finally blow yourself up!")
+def button_first_display(number):
+    #e.delete(0,END)
+    current = e.get()
+    e.delete(0, END)
+    e.insert(0, str(current) + str(number))
+def button_clear():
+    current = e.get()
+    if not current:
+        do_nothing()
+    else:
+        e.delete(0, END)
+"""def button_potega():
+    current = e.get()
+    if not current:
+        do_nothing()
+    else:
+        first_number = e.get()
+        global f_num
+        global f_operator
+        f_operator = 5
+        f_num = int(first_number)
+        e.delete(0, END)
+        """
+def button_add_click():
+    current = e.get()
+    if not current:
+        do_nothing()
+    else:
+        first_number = e.get()
+        global f_num
+        global f_operator
+        f_operator = 2
+        f_num = int(first_number)
+        e.delete(0, END)
+
+
+def button_minus_click():
+    current = e.get()
+    if not current:
+        do_nothing()
+    else:
+        first_number = e.get()
+        global f_num
+        global f_operator
+        f_operator = 1
+        f_num = int(first_number)
+        e.delete(0, END)
+
+def button_multiply():
+    current = e.get()
+    if not current:
+        do_nothing()
+    else:
+        first_number = e.get()
+        global f_num
+        global f_operator
+        f_operator = 3
+        f_num = int(first_number)
+        e.delete(0, END)
+def button_divide():
+    current = e.get()
+    if not current:
+        do_nothing()
+    else:
+        first_number = e.get()
+        global f_num
+        global f_operator
+        f_operator = 4
+        f_num = int(first_number)
+        e.delete(0, END)
+
+
+def button_equal():
+    current = e.get()
+    if not current:
+        do_nothing()
+    else:
+        second_number = e.get()
+        e.delete(0, END)
+        if f_operator ==1:
+            e.insert(0, f_num - int(second_number))
+        if f_operator ==2:
+            e.insert(0, f_num + int(second_number))
+        if f_operator ==3:
+            e.insert(0, f_num * int(second_number))
+        if f_operator ==4:
+            e.insert(0, f_num / int(second_number))
+        if f_operator ==5:
+            e.insert(0, f_num ** 2)
+
+def button_cnd():
+    MsgBox = messagebox.showinfo('WHY???!!!', "Dont click random buttons, you can finally blow yourself up!")
+def callback(url):
+    webbrowser.open_new(url)
+
+button_1 = Button(root, text="1", padx=20, pady=10, width=10, background="Black",font="Bold", fg="White", bd=10, command =lambda: button_first_display(1))
+button_2 = Button(root, text="2", padx=20, pady=10, width=10, background="Black",font="Bold", fg="White", bd=10, command = lambda: button_first_display(2))
+button_3 = Button(root, text="3", padx=20, pady=10, width=10,background="Black",font="Bold", fg="White", bd=10,command =lambda: button_first_display(3))
+button_4 = Button(root, text="4", padx=20, pady=10, width=10,background="Black",font="Bold", fg="White", bd=10,command = lambda: button_first_display(4))
+button_5 = Button(root, text="5", padx=20, pady=10, width=10,background="Black",font="Bold", fg="White", bd=10, command = lambda: button_first_display(5))
+button_6 = Button(root, text="6",padx=20, pady=10, width=10,background="Black",font="Bold", fg="White", bd=10, command = lambda: button_first_display(6))
+button_7 = Button(root, text="7", padx=20, pady=10, width=10,background="Black",font="Bold", fg="White",bd=10,  command = lambda: button_first_display(7))
+button_8 = Button(root, text="8", padx=20, pady=10, width=10,background="Black",font="Bold", fg="White", bd=10, command = lambda: button_first_display(8))
+button_9 = Button(root, text="9", padx=20, pady=10, width=10,background="Black",font="Bold", fg="White", bd=10, command = lambda: button_first_display(9))
+button_0 = Button(root, text="0", padx=20, pady=10, width=10,background="Black",font="Bold", fg="White", bd=10, command = lambda: button_first_display(0))
+button_author = Button(root, text="author", padx=20, pady=10, width=10,background="Black",font="Bold", fg="White", bd=10, command = lambda:callback("tomaszkurzawa.prof24.pl"))
+
+
+button_minus = Button(root, text="-", padx=20, pady=10, width=10,background="Black",font="Bold", fg="White", bd=10, command = button_minus_click)
+button_mul = Button(root, text="*", padx=20, pady=10, width=10,background="Black",font="Bold", fg="White", bd=10, command = button_multiply)
+button_div = Button(root, text="/", padx=20, pady=10, width=10,background="Black",font="Bold", fg="White", bd=10, command = button_divide)
+
+button_plus = Button(root, text="+", padx=20, pady=10, width=10, background="Orange",font="Bold", fg="White", bd=10, command =  button_add_click)
+button_equal = Button(root, text="=", padx=20, pady=10, width=10, background="Orange",font="Bold", fg="White", bd=10, command = button_equal)
+button_cee  = Button(root, text="C", padx=20, pady=10, width=10,  background="Orange",font="Bold", fg="White", bd=10, command =  button_clear)
+button_boom= Button(root, text= "???", padx=20, pady=10, width=10,  background="Black",font="Bold", fg="White", bd=10, command= button_cnd)
+button_1.grid(row=3, column=0)
+button_2.grid(row=3, column=1)
+button_3.grid(row=3, column=2)
+
+button_4.grid(row=2, column=0)
+button_5.grid(row=2, column=1)
+button_6.grid(row=2, column=2)
+
+button_7.grid(row=1, column=0)
+button_8.grid(row=1, column=1)
+button_9.grid(row=1, column=2)
+
+button_0.grid(row=4, column=0)
+button_boom.grid(row=5 , column= 0)
+
+button_plus.grid(row=4, column=1)
+button_equal.grid(row=4, column=2)
+button_cee.grid(row=5, column=1)
+button_author.grid(row=5, column=2)
+button_minus.grid(row=6, column=0)
+button_mul.grid(row=6, column=1)
+button_div.grid(row=6, column=2)
+
+
+
+
+
+#myButton = Button(root, text= "Click", command= myClick)
+
+root.mainloop()
