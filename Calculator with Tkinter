@@ -13,19 +13,28 @@ root.config(menu=menu)
 
 def do_nothing():
     return
-"""
+
 def science_calc():
     root.resizable(width=False, height=False)
     root.geometry("940x640+0+0")
-    button_percent = Button(root, text="x2", padx=20, pady=10, width=10, background="Black", font="Bold", fg="White", bd=10,
+    button_count2 = Button(root, text="x²", padx=20, pady=10, width=10, background="Black", font="Bold", fg="White", bd=10,
                       command=button_potega)
-    button_percent.grid(row=1, column=4)
-"""
+    button_count2.grid(row=1, column=4)
+    button_count3 = Button(root, text="x3", padx=20, pady=10, width=10, background="Black", font="Bold", fg="White",
+                            bd=10,
+                            command=button_potega2)
+    button_count3.grid(row=1, column=5)
+    """
+    button_count_y = Button(root, text="xY", padx=20, pady=10, width=10, background="Black", font="Bold", fg="White",
+                           bd=10,
+                           command=button_potega_y)
+    button_count_y.grid(row=2, column=4)
 
+    """
 
 subMenu = Menu(menu)
 menu.add_cascade(label="Opcje", menu=subMenu)
-subMenu.add_command(label="Kalkulator Naukowy", command = do_nothing())
+subMenu.add_command(label="Kalkulator Naukowy", command = science_calc)
 subMenu.add_command(label="", command=do_nothing)
 subMenu.add_separator()
 subMenu.add_command(label="Exit", command= root.destroy)
@@ -53,7 +62,7 @@ def button_clear():
         do_nothing()
     else:
         e.delete(0, END)
-"""def button_potega():
+def button_potega():
     current = e.get()
     if not current:
         do_nothing()
@@ -61,10 +70,33 @@ def button_clear():
         first_number = e.get()
         global f_num
         global f_operator
-        f_operator = 5
         f_num = int(first_number)
         e.delete(0, END)
-        """
+        e.insert(0, f_num ** 2)
+def button_potega2():
+    current = e.get()
+    if not current:
+        do_nothing()
+    else:
+        first_number = e.get()
+        global f_num
+        global f_operator
+        f_num = int(first_number)
+        e.delete(0, END)
+        e.insert(0, f_num ** 3)
+"""def button_potega_y():
+    current = e.get()
+    if not current:
+        do_nothing()
+    else:
+        first_number = e.get()
+        global f_num
+        global f_operator
+        f_num = int(first_number)
+        e.delete(0, END)
+        e.insert(0, first_number ** second_number)
+        
+"""
 def button_add_click():
     current = e.get()
     if not current:
@@ -129,8 +161,7 @@ def button_equal():
             e.insert(0, f_num * int(second_number))
         if f_operator ==4:
             e.insert(0, f_num / int(second_number))
-        if f_operator ==5:
-            e.insert(0, f_num ** 2)
+
 
 def button_cnd():
     MsgBox = messagebox.showinfo('WHY???!!!', "Dont click random buttons, you can finally blow yourself up!")
