@@ -1,25 +1,30 @@
-from tkinter import *
-from tkinter import messagebox
-import webbrowser
-root = Tk()
-root.title("Simple calculator")
-root.configure(background="Black")
-root.resizable(width=False, height=False)
-root.geometry("470x570+0+0")
+from tkinter import * #importing tkinter module
+from tkinter import messagebox  #importing tkinter messagebox
+import webbrowser #importing module for links opening
+root = Tk() #main window
+root.title("Simple calculator") #window title
+root.configure(background="Black") #black background
+root.resizable(width=False, height=False) #disabling elastic of the window
+root.geometry("470x570+0+0") #defining root height and width
 
-menu = Menu(root)
-root.config(menu=menu)
+menu = Menu(root) #defining simple menu
+root.config(menu=menu) #defining main menu root
 
 
-def do_nothing():
+def do_nothing(): #best function in whole program, when i do not enter the number, i want the button to exacly do nothing
     return
-
-def science_calc():
-    root.resizable(width=False, height=False)
-    root.geometry("940x570+0+0")
+def science_calc(): #defining new window with more options
+    root.resizable(width=False, height=False) #same as before
+    root.geometry("940x570+0+0") #defining window height again
+    """
+    For now, buttons are in massive chaos. But later, i will clear them and do better gui, now i am trying to function
+    everything by myself. That's why there are not classes in code. It's all work in progress. 
+    ~~teekay
+    
+    """
     button_count2 = Button(root, text="x²", padx=20, pady=10, width=10, background="Black", font="Bold", fg="White", bd=10,
-                      command=button_potega)
-    button_count2.grid(row=1, column=4)
+                      command=button_potega) #defining the power of the number
+    button_count2.grid(row=1, column=4) #where the button should be
     button_count3 = Button(root, text="x3", padx=20, pady=10, width=10, background="Black", font="Bold", fg="White",
                             bd=10,
                             command=button_potega2)
@@ -27,24 +32,24 @@ def science_calc():
 
     button_count_y = Button(root, text="xY", padx=20, pady=10, width=10, background="Black", font="Bold", fg="White",
                            bd=10,
-                           command=button_potega_y)
+                           command=button_potega_y) #button who calculate power of the number by other number
     button_count_y.grid(row=2, column=4)
     button_dot = Button(root, text=".", padx=20, pady=10, width=10, background="Black", font="Bold", fg="White", bd=10,
-                      command=lambda: button_first_display("."))
+                      command=lambda: button_first_display(".")) #adding the dot to the number
     button_dot.grid(row=2, column=5)
     button_modulo = Button(root, text="%", padx=20, pady=10, width=10, background="Black", font="Bold", fg="White", bd=10,
-                        command=modulo)
+                        command=modulo) #modulo button
     button_modulo.grid(row=3, column=5)
 
 
 
-subMenu = Menu(menu)
+subMenu = Menu(menu) #submenu, for scientific calculator
 menu.add_cascade(label="Opcje", menu=subMenu)
 subMenu.add_command(label="Kalkulator Naukowy", command = science_calc)
 subMenu.add_command(label="", command=do_nothing)
 
 subMenu.add_separator()
-subMenu.add_command(label="Exit", command= root.destroy)
+subMenu.add_command(label="Exit", command= root.destroy) #exit button
 """
 editMenu= Menu(menu)
 menu.add_cascade(label="edit", menu=editMenu)
@@ -55,31 +60,32 @@ editMenu.add_command(label="Redo", command=do_nothing)
 """
 
 e = Entry(root, width=35, borderwidth=65, font="Bold",  background="Orange", fg="White")
-e.grid(row=0, column=0, columnspan=3, padx=10, pady=10)
+e.grid(row=0, column=0, columnspan=3, padx=10, pady=10) #Entering the display
 
 def button_cnd():
-    MsgBox = messagebox.showinfo('???!!!', "Dont click random buttons, you can finally blow yourself up!")
-def button_first_display(number):
+    MsgBox = messagebox.showinfo('???!!!', "Dont click random buttons, you can finally blow yourself up!") #funny button ;)
+def button_first_display(number): #entering first number function
     #e.delete(0,END)
-    current = e.get()
-    e.delete(0, END)
-    e.insert(0, str(current) + str(number))
-def button_clear():
+    current = e.get() #first number
+    e.delete(0, END) #clearing display
+    e.insert(0, str(current) + str(number)) #showing the number in memory and second one
+def button_clear(): #clearing the whole display
     current = e.get()
     if not current:
-        do_nothing()
+        do_nothing() #we want buttons not to give errors, when we click on them without variable, so here it is
     else:
-        e.delete(0, END)
-def button_potega():
+        e.delete(0, END) #clearing the display
+def button_potega(): #power of the number button
     current = e.get()
     if not current:
         do_nothing()
     else:
         first_number = e.get()
-        global f_num
+        global f_num #global for every function, it's useful that's why i dont have to define it everytime i code
+                     #another function
         f_num = int(first_number)
         e.delete(0, END)
-        e.insert(0, f_num ** 2)
+        e.insert(0, f_num ** 2) #for example, 2 to power 2 = 4
 def button_potega2():
     current = e.get()
     if not current:
@@ -89,7 +95,7 @@ def button_potega2():
         global f_num
         f_num = int(first_number)
         e.delete(0, END)
-        e.insert(0, f_num ** 3)
+        e.insert(0, f_num ** 3) # for example, 2 to power 3 = 8
 
 def button_potega_y():
     current = e.get()
@@ -99,12 +105,12 @@ def button_potega_y():
     else:
         first_number = e.get()
         global f_num
-        global f_operator
+        global f_operator #it's very important, for equal function, thats why it is global
         f_operator = 5
         f_num = int(first_number)
-        e.delete(0, END)
+        e.delete(0, END) #defining our own power
 
-def button_add_click():
+def button_add_click(): #adding two numbers function
     current = e.get()
     if not current:
         do_nothing()
@@ -112,12 +118,12 @@ def button_add_click():
         first_number = e.get()
         global f_num
         global f_operator
-        f_operator = 2
+        f_operator = 2 
         f_num = float(first_number)
         e.delete(0, END)
+ 
 
-
-def button_minus_click():
+def button_minus_click(): #difference of two numbers function
     current = e.get()
     if not current:
         do_nothing()
@@ -129,7 +135,7 @@ def button_minus_click():
         f_num = float(first_number)
         e.delete(0, END)
 
-def button_multiply():
+def button_multiply(): #multiplying all the numbers
     current = e.get()
     if not current:
         do_nothing()
@@ -140,7 +146,7 @@ def button_multiply():
         f_operator = 3
         f_num = int(first_number)
         e.delete(0, END)
-def button_divide():
+def button_divide(): #dividing the numbers
     current = e.get()
     if not current:
         do_nothing()
@@ -151,7 +157,7 @@ def button_divide():
         f_operator = 4
         f_num = int(first_number)
         e.clear(0)
-def modulo():
+def modulo(): #modulo, as it seems
     current = e.get()
     if not current:
         do_nothing()
@@ -162,6 +168,11 @@ def modulo():
         f_operator = 6
         f_num = int(first_number)
         e.delete(0, END)
+        """
+        So, before, we just made a 1/2 steps for the functions - just one button. Now first simple buttons, are 
+        starting to end their carreer - thats why i used the f_operator - because button_equal function have to 
+        know how to end other functions.
+        """
 def button_equal():
     current = e.get()
     if not current:
@@ -181,13 +192,13 @@ def button_equal():
             e.insert(0, f_num ** float(second_number))
         if f_operator ==6:
             e.insert(0, f_num % float(second_number))
-def backspace():
+def backspace(): #just simple backspace button
     current = e.get()
     if not current:
         do_nothing()
     if current:
         e.delete(0)
-def minus_add(number):
+def minus_add(number): #transforming the positive number to negative, work in progress
     current = e.get()
     if not current:
         do_nothing()
@@ -195,13 +206,18 @@ def minus_add(number):
         current = e.get()
         e.delete(0, END)
         e.insert(0, "-" + str(current))
-        
 
 
-def button_cnd():
+
+def button_cnd(): #;)
     MsgBox = messagebox.showinfo('WHY???!!!', "Dont click random buttons, you can finally blow yourself up!")
-def callback(url):
+def callback(url): #my site, hope u will sooner or later enter ;) teekay
     webbrowser.open_new(url)
+
+    """
+    So, all of the buttons should know how they look, are they cute or ugly, what they are doing, are they doing good
+    or not. That's why we define it bottom
+    """
 
 button_1 = Button(root, text="1", padx=20, pady=10, width=10, background="Black",font="Bold", fg="White", bd=10, command =lambda: button_first_display(1))
 button_2 = Button(root, text="2", padx=20, pady=10, width=10, background="Black",font="Bold", fg="White", bd=10, command = lambda: button_first_display(2))
@@ -229,6 +245,7 @@ button_back = Button(root, text="BACK", padx=20, pady=10, width=10, background="
 add_minus = Button(root, text="-", padx=20, pady=10, width=10, background="Black", font="Bold", fg="White",
                            bd=10,
                            command=lambda: minus_add("-"))
+#where the buttons are - like in html I just plan where they should be
 add_minus.grid(row=4, column=5)
 
 button_1.grid(row=3, column=0)
@@ -260,6 +277,6 @@ button_back.grid(row=5, column=0)
 
 
 
-#myButton = Button(root, text= "Click", command= myClick)
-
+#and, we want to program keep being On, ofcourse we dont want to program shutdown when we are calculating something
+#thats why loop is keeping it online
 root.mainloop()
