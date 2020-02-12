@@ -5,7 +5,7 @@ root = Tk()
 root.title("Simple calculator")
 root.configure(background="Black")
 root.resizable(width=False, height=False)
-root.geometry("570x640+0+0")
+root.geometry("470x570+0+0")
 
 menu = Menu(root)
 root.config(menu=menu)
@@ -16,7 +16,7 @@ def do_nothing():
 
 def science_calc():
     root.resizable(width=False, height=False)
-    root.geometry("940x640+0+0")
+    root.geometry("940x570+0+0")
     button_count2 = Button(root, text="x²", padx=20, pady=10, width=10, background="Black", font="Bold", fg="White", bd=10,
                       command=button_potega)
     button_count2.grid(row=1, column=4)
@@ -24,13 +24,12 @@ def science_calc():
                             bd=10,
                             command=button_potega2)
     button_count3.grid(row=1, column=5)
-    """
+
     button_count_y = Button(root, text="xY", padx=20, pady=10, width=10, background="Black", font="Bold", fg="White",
                            bd=10,
                            command=button_potega_y)
     button_count_y.grid(row=2, column=4)
 
-    """
 
 subMenu = Menu(menu)
 menu.add_cascade(label="Opcje", menu=subMenu)
@@ -46,7 +45,7 @@ menu.add_cascade(label="Edit", menu=editMenu)
 editMenu.add_command(label="Redo", command=do_nothing)
 
 
-e = Entry(root, width=35, borderwidth=65, font="Bold", background="Orange", fg="White")
+e = Entry(root, width=35, borderwidth=65, font="Bold",  background="Orange", fg="White")
 e.grid(row=0, column=0, columnspan=3, padx=10, pady=10)
 
 def button_cnd():
@@ -69,7 +68,6 @@ def button_potega():
     else:
         first_number = e.get()
         global f_num
-        global f_operator
         f_num = int(first_number)
         e.delete(0, END)
         e.insert(0, f_num ** 2)
@@ -80,23 +78,23 @@ def button_potega2():
     else:
         first_number = e.get()
         global f_num
-        global f_operator
         f_num = int(first_number)
         e.delete(0, END)
         e.insert(0, f_num ** 3)
-"""def button_potega_y():
+
+def button_potega_y():
     current = e.get()
     if not current:
         do_nothing()
+
     else:
         first_number = e.get()
         global f_num
         global f_operator
+        f_operator = 5
         f_num = int(first_number)
         e.delete(0, END)
-        e.insert(0, first_number ** second_number)
-        
-"""
+
 def button_add_click():
     current = e.get()
     if not current:
@@ -109,6 +107,18 @@ def button_add_click():
         f_num = int(first_number)
         e.delete(0, END)
 
+"""
+def button_dot():
+    current = e.get()
+    if not current:
+        do_nothing()
+    else:
+        first_number = e.get()
+        global f_num
+        global f_operator
+        f_num = int(first_number)
+
+"""
 
 def button_minus_click():
     current = e.get()
@@ -145,7 +155,6 @@ def button_divide():
         f_num = int(first_number)
         e.delete(0, END)
 
-
 def button_equal():
     current = e.get()
     if not current:
@@ -161,7 +170,8 @@ def button_equal():
             e.insert(0, f_num * int(second_number))
         if f_operator ==4:
             e.insert(0, f_num / int(second_number))
-
+        if f_operator ==5:
+            e.insert(0, f_num ** int(second_number))
 
 def button_cnd():
     MsgBox = messagebox.showinfo('WHY???!!!', "Dont click random buttons, you can finally blow yourself up!")
@@ -212,8 +222,13 @@ button_minus.grid(row=6, column=0)
 button_mul.grid(row=6, column=1)
 button_div.grid(row=6, column=2)
 
+'''
+button_dot = Button(root, text=".", padx=20, pady=10, width=10, background="Black", font="Bold", fg="White",
+                        bd=10, command=button_dot)
 
+button_dot.grid(row=2, column=5)
 
+'''
 
 
 #myButton = Button(root, text= "Click", command= myClick)
