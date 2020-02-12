@@ -33,6 +33,7 @@ def science_calc():
                       command=lambda: button_first_display("."))
     button_dot.grid(row=2, column=5)
 
+
 subMenu = Menu(menu)
 menu.add_cascade(label="Opcje", menu=subMenu)
 subMenu.add_command(label="Kalkulator Naukowy", command = science_calc)
@@ -143,8 +144,7 @@ def button_divide():
         global f_operator
         f_operator = 4
         f_num = int(first_number)
-        e.delete(0, END)
-
+        e.clear(0)
 def button_equal():
     current = e.get()
     if not current:
@@ -162,6 +162,12 @@ def button_equal():
             e.insert(0, f_num / float(second_number))
         if f_operator ==5:
             e.insert(0, f_num ** float(second_number))
+def backspace():
+    current = e.get()
+    if not current:
+        do_nothing()
+    if current:
+        e.delete(1)
 
 def button_cnd():
     MsgBox = messagebox.showinfo('WHY???!!!', "Dont click random buttons, you can finally blow yourself up!")
@@ -189,6 +195,9 @@ button_plus = Button(root, text="+", padx=20, pady=10, width=10, background="Ora
 button_equal = Button(root, text="=", padx=20, pady=10, width=10, background="Orange",font="Bold", fg="White", bd=10, command = button_equal)
 button_cee  = Button(root, text="C", padx=20, pady=10, width=10,  background="Orange",font="Bold", fg="White", bd=10, command =  button_clear)
 button_boom= Button(root, text= "???", padx=20, pady=10, width=10,  background="Black",font="Bold", fg="White", bd=10, command= button_cnd)
+button_back = Button(root, text="BACK", padx=20, pady=10, width=10, background="Black", font="Bold", fg="White", bd=10,
+                        command= backspace)
+
 button_1.grid(row=3, column=0)
 button_2.grid(row=3, column=1)
 button_3.grid(row=3, column=2)
@@ -202,7 +211,7 @@ button_8.grid(row=1, column=1)
 button_9.grid(row=1, column=2)
 
 button_0.grid(row=4, column=0)
-button_boom.grid(row=5 , column= 0)
+button_boom.grid(row=5 , column= 4)
 
 button_plus.grid(row=4, column=1)
 button_equal.grid(row=4, column=2)
@@ -212,13 +221,10 @@ button_minus.grid(row=6, column=0)
 button_mul.grid(row=6, column=1)
 button_div.grid(row=6, column=2)
 
-'''
-button_dot = Button(root, text=".", padx=20, pady=10, width=10, background="Black", font="Bold", fg="White",
-                        bd=10, command=button_dot)
+button_back.grid(row=5, column=0)
 
-button_dot.grid(row=2, column=5)
 
-'''
+
 
 
 #myButton = Button(root, text= "Click", command= myClick)
