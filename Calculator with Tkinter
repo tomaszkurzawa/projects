@@ -29,7 +29,9 @@ def science_calc():
                            bd=10,
                            command=button_potega_y)
     button_count_y.grid(row=2, column=4)
-
+    button_dot = Button(root, text=".", padx=20, pady=10, width=10, background="Black", font="Bold", fg="White", bd=10,
+                      command=lambda: button_first_display("."))
+    button_dot.grid(row=2, column=5)
 
 subMenu = Menu(menu)
 menu.add_cascade(label="Opcje", menu=subMenu)
@@ -104,21 +106,9 @@ def button_add_click():
         global f_num
         global f_operator
         f_operator = 2
-        f_num = int(first_number)
+        f_num = float(first_number)
         e.delete(0, END)
 
-"""
-def button_dot():
-    current = e.get()
-    if not current:
-        do_nothing()
-    else:
-        first_number = e.get()
-        global f_num
-        global f_operator
-        f_num = int(first_number)
-
-"""
 
 def button_minus_click():
     current = e.get()
@@ -129,7 +119,7 @@ def button_minus_click():
         global f_num
         global f_operator
         f_operator = 1
-        f_num = int(first_number)
+        f_num = float(first_number)
         e.delete(0, END)
 
 def button_multiply():
@@ -163,15 +153,15 @@ def button_equal():
         second_number = e.get()
         e.delete(0, END)
         if f_operator ==1:
-            e.insert(0, f_num - int(second_number))
+            e.insert(0, f_num - float(second_number))
         if f_operator ==2:
-            e.insert(0, f_num + int(second_number))
+            e.insert(0, f_num + float(second_number))
         if f_operator ==3:
-            e.insert(0, f_num * int(second_number))
+            e.insert(0, f_num * float(second_number))
         if f_operator ==4:
-            e.insert(0, f_num / int(second_number))
+            e.insert(0, f_num / float(second_number))
         if f_operator ==5:
-            e.insert(0, f_num ** int(second_number))
+            e.insert(0, f_num ** float(second_number))
 
 def button_cnd():
     MsgBox = messagebox.showinfo('WHY???!!!', "Dont click random buttons, you can finally blow yourself up!")
